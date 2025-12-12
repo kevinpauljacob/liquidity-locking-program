@@ -1,0 +1,27 @@
+[package]
+name = "liquity-locking-program"
+version = "0.1.0"
+description = "Created with Anchor"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "liquity_locking_program"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+custom-heap = []
+custom-panic = []
+anchor-debug = []
+solana = []
+
+
+[dependencies]
+anchor-spl = "0.31.1"
+anchor-lang = { version = "0.31.1", features = ["init-if-needed"] }
+bytemuck = { version = "1.13.1", features = ["derive", "min_const_generics"] }
