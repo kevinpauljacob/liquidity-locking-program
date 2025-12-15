@@ -1,13 +1,15 @@
 use anchor_lang::prelude::*;
-use instructions::lock_liquidity::*;
+use instructions::{
+    create_position_ix::*,
+    add_liquidity_ix::*,
+    lock_position_ix::*,
+};
 
 pub mod instructions;
 pub mod context;
 pub mod states;
 pub mod errors;
 pub mod constants;
-pub use context::*;
-pub use constants::*;
 
 declare_id!("DtnLiyCepzKfNiyFHBHEqabhrNe65tx8FPxLWQeh6JeC");
 
@@ -15,10 +17,15 @@ declare_id!("DtnLiyCepzKfNiyFHBHEqabhrNe65tx8FPxLWQeh6JeC");
 pub mod liquidity_locking_program {
     use super::*;
 
-    pub fn damm_v2_lock_liquidity(
-        ctx: Context<DynamicAmmLockLiquidity>,
-        duration_months: u8,
-    ) -> Result<()> {
-        handle_lock_liquidity(ctx, duration_months)
+    pub fn create_position_ix(ctx: Context<DammV2CreatePosition>) -> Result<()> {
+        handle_create_position(ctx)
+    }
+
+    pub fn add_liquidity_ix(ctx: Context<DammV2AddLiquidity>) -> Result<()> {
+        handle_add_liquidity(ctx)
+    }
+
+    pub fn lock_position_ix(ctx: Context<DammV2LockPosition>, duration_months: u8) -> Result<()> {
+        handle_lock_position(ctx, duration_months)
     }
 }

@@ -176,26 +176,8 @@ describe("liquidity-locking-program", () => {
     console.log("User funded with SOL, SLERF, and USDC");
   });
 
-  it("Lock Liquidity", async () => {
-    // Derive user token accounts (ATAs)
-    const userTokenAAccount = await getAssociatedTokenAddress(USDC_MINT, user); // USDC
-    const userTokenBAccount = await getAssociatedTokenAddress(SLERF_MINT, user); // SLERF
-
-    // Pool and mints (essentials to pass)
+  it("Create Position", async () => {
     const pool = new PublicKey("8yswq8vqEDeTrN2Ez1Bdq2hRekzvFZgMxrdfUKVaNBtQ"); // SLERF-USDC pool
-    const tokenAMint = USDC_MINT;
-    const tokenBMint = SLERF_MINT;
-
-    // Fetch pool account to get vault addresses
-    const poolAccount = await cpAmm.fetchPoolState(pool);
-    const tokenAVault = poolAccount.tokenAVault;
-    const tokenBVault = poolAccount.tokenBVault;
-
-    const durationMonths = 3; // User selects 3 months
-
-    const computeUnitIx = ComputeBudgetProgram.setComputeUnitLimit({
-      units: 800_000, // Higher for CPIs
-    });
 
     // Generate the position NFT mint as a keypair (not a PDA)
     const positionNftMint = Keypair.generate();
@@ -204,44 +186,38 @@ describe("liquidity-locking-program", () => {
     // Use SDK to derive position address (correct seeds)
     const position = derivePositionAddress(positionNftMint.publicKey);
 
-    // FIXED: position_nft_account is an ATA for the position NFT mint (Token2022)
+    // Position NFT account is an ATA for the position NFT mint (Token2022)
     const positionNftAccount = derivePositionNftAccount(
       positionNftMint.publicKey
     );
-
-    // Vesting must be a Keypair signer
-    const vesting = Keypair.generate();
-    console.log("Vesting Account:", vesting.publicKey.toBase58());
 
     const [eventAuthority] = PublicKey.findProgramAddressSync(
       [Buffer.from("__event_authority")],
       METEORA_PROGRAM_ID
     );
 
-    // Pass all required accounts, including system programs
+    const computeUnitIx = ComputeBudgetProgram.setComputeUnitLimit({
+      units: 400_000,
+    });
+
     const tx = await program.methods
-      .dammV2LockLiquidity(durationMonths)
+      .createPositionIx()
       .accounts({
-        pool,
-        userTokenAAccount,
-        userTokenBAccount,
-        tokenAMint,
-        tokenBMint,
-        tokenAVault,
-        tokenBVault,
-        positionNftMint: positionNftMint.publicKey,
-        positionNftAccount,
-        position,
-        vesting: vesting.publicKey, // Use the keypair's public key
-        payer: user,
-        tokenProgram: TOKEN_2022_PROGRAM_ID,
-        tokenAProgram: TOKEN_PROGRAM_ID,
-        tokenBProgram: TOKEN_PROGRAM_ID,
-        eventAuthority,
-        dammProgram: METEORA_PROGRAM_ID,
+        owner: user, // Added: Explicit owner (same as payer)
+        positionNftMint: positionNftMint.publicKey, // #2
+        positionNftAccount, // #3
+        pool, // #4
+        position, // #5
+        poolAuthority: new PublicKey(
+          "HLnpSz9h2S4hiLQ43rnSD9XkcUThA7B8hQMKmDaiTLcC"
+        ), // Added: #6
+        payer: user, // #7
+        tokenProgram: TOKEN_2022_PROGRAM_ID, // #8
+        eventAuthority, // #10
+        dammProgram: METEORA_PROGRAM_ID, // #11
       })
       .preInstructions([computeUnitIx])
-      .signers([userKeypair, positionNftMint, vesting]) // Add vesting as a signer
+      .signers([userKeypair, positionNftMint])
       .rpc();
 
     logTxnSignature(tx);

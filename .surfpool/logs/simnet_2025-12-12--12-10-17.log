@@ -56,3 +56,115 @@
 [2025-12-12--18-23-25 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:53439.
 [2025-12-12--18-28-19 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:54048.
 [2025-12-12--18-36-04 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:54947.
+[2025-12-13--00-15-24 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.042498
+[2025-12-13--00-15-25 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:64338.
+[2025-12-13--00-15-25 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000820
+[2025-12-13--00-15-33 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000438
+[2025-12-13--00-15-35 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:64396.
+[2025-12-13--00-15-35 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000421
+[2025-12-13--08-48-57 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.118974
+[2025-12-13--08-48-58 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:53302.
+[2025-12-13--08-48-58 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000093
+[2025-12-13--10-24-01 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.031423
+[2025-12-13--10-24-03 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:56084.
+[2025-12-13--10-24-03 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000111
+[2025-12-13--14-54-49 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.013864
+[2025-12-13--14-54-50 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:62711.
+[2025-12-13--14-54-50 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000117
+[2025-12-13--16-10-29 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.007023
+[2025-12-13--16-10-30 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:64184.
+[2025-12-13--16-10-30 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000509
+[2025-12-13--18-13-56 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000610
+[2025-12-13--18-13-57 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:50225.
+[2025-12-13--18-13-57 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000854
+[2025-12-13--18-30-36 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000361
+[2025-12-13--18-30-37 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:50583.
+[2025-12-13--18-30-37 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000154
+[2025-12-13--21-40-07 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.001167
+[2025-12-13--21-40-08 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:55160.
+[2025-12-13--21-40-08 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000137
+[2025-12-13--22-37-20 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000263
+[2025-12-13--22-37-22 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59392.
+[2025-12-13--22-37-22 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000089
+[2025-12-13--22-37-29 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000225
+[2025-12-13--22-37-31 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59422.
+[2025-12-13--22-37-31 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000236
+[2025-12-13--22-37-39 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000158
+[2025-12-13--22-37-41 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59464.
+[2025-12-13--22-37-41 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000098
+[2025-12-13--22-37-49 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000188
+[2025-12-13--22-37-51 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59503.
+[2025-12-13--22-37-51 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000294
+[2025-12-13--22-37-59 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000166
+[2025-12-13--22-38-01 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59532.
+[2025-12-13--22-38-01 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000241
+[2025-12-13--22-38-09 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000291
+[2025-12-13--22-38-11 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59567.
+[2025-12-13--22-38-11 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000195
+[2025-12-13--22-38-19 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000137
+[2025-12-13--22-38-21 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59593.
+[2025-12-13--22-38-21 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000121
+[2025-12-13--22-38-29 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000107
+[2025-12-13--22-38-31 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59620.
+[2025-12-13--22-38-31 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000221
+[2025-12-13--22-38-39 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000264
+[2025-12-13--22-38-41 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59654.
+[2025-12-13--22-38-41 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000120
+[2025-12-13--22-38-49 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000221
+[2025-12-13--22-38-51 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59684.
+[2025-12-13--22-38-51 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000144
+[2025-12-13--22-38-59 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000146
+[2025-12-13--22-39-01 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59716.
+[2025-12-13--22-39-01 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000193
+[2025-12-13--22-39-09 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000169
+[2025-12-13--22-39-11 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59761.
+[2025-12-13--22-39-11 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000225
+[2025-12-13--22-39-20 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000312
+[2025-12-13--22-39-22 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59799.
+[2025-12-13--22-39-22 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000108
+[2025-12-13--22-39-30 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000113
+[2025-12-13--22-39-32 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59833.
+[2025-12-13--22-39-32 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000121
+[2025-12-13--22-39-40 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000148
+[2025-12-13--22-39-42 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59864.
+[2025-12-13--22-39-42 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000142
+[2025-12-13--22-39-50 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000238
+[2025-12-13--22-39-51 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59896.
+[2025-12-13--22-39-51 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000094
+[2025-12-13--22-40-00 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000143
+[2025-12-13--22-40-02 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59948.
+[2025-12-13--22-40-02 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000129
+[2025-12-13--22-40-10 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000124
+[2025-12-13--22-40-11 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59977.
+[2025-12-13--22-40-12 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000305
+[2025-12-13--22-40-20 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000154
+[2025-12-13--22-40-22 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:60008.
+[2025-12-13--22-40-22 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000129
+[2025-12-13--22-40-30 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000131
+[2025-12-13--22-40-32 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:60052.
+[2025-12-13--22-40-32 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000124
+[2025-12-13--22-40-40 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000124
+[2025-12-13--22-40-42 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:60084.
+[2025-12-13--22-40-42 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000222
+[2025-12-13--22-40-50 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000208
+[2025-12-13--22-40-51 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:60126.
+[2025-12-13--22-40-51 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000245
+[2025-12-13--22-41-00 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000150
+[2025-12-13--22-41-02 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:60163.
+[2025-12-13--22-41-02 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000101
+[2025-12-13--22-41-10 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000117
+[2025-12-13--22-41-12 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:60193.
+[2025-12-13--22-41-12 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000236
+[2025-12-14--09-29-41 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.020537
+[2025-12-14--09-29-43 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:59956.
+[2025-12-14--09-29-43 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000193
+[2025-12-14--23-17-09 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.032750
+[2025-12-14--23-17-10 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:49702.
+[2025-12-14--23-17-10 INFO actix_web::middleware::logger] 127.0.0.1 "GET /config HTTP/1.1" 200 166 "http://127.0.0.1:18488/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" 0.000074
+[2025-12-15--11-14-21 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:60642.
+[2025-12-15--11-15-13 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:60986.
+[2025-12-15--11-47-44 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:63958.
+[2025-12-15--11-49-55 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:64947.
+[2025-12-15--11-52-58 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:65344.
+[2025-12-15--11-53-19 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:49251.
+[2025-12-15--11-53-50 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:49451.
