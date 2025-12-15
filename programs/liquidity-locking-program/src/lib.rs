@@ -21,11 +21,14 @@ pub mod liquidity_locking_program {
         handle_create_position(ctx)
     }
 
-    pub fn add_liquidity_ix(ctx: Context<DammV2AddLiquidity>) -> Result<()> {
-        handle_add_liquidity(ctx)
+    pub fn add_liquidity_ix(ctx: Context<DammV2AddLiquidity>, liquidity_delta: u128) -> Result<()> {
+        handle_add_liquidity(ctx, liquidity_delta)
     }
 
-    pub fn lock_position_ix(ctx: Context<DammV2LockPosition>, duration_months: u8) -> Result<()> {
-        handle_lock_position(ctx, duration_months)
+    pub fn lock_position_ix(
+        ctx: Context<DammV2LockPosition>,
+        params: crate::context::damm_v2::VestingParameters,
+    ) -> Result<()> {
+        handle_lock_position(ctx, params)
     }
 }

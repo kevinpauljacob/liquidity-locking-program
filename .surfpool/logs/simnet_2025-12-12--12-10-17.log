@@ -168,3 +168,9 @@
 [2025-12-15--11-52-58 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:65344.
 [2025-12-15--11-53-19 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:49251.
 [2025-12-15--11-53-50 INFO parity_ws::io] Accepted a new tcp connection from 127.0.0.1:49451.
+[2025-12-15--13-42-32 INFO actix_server::worker] shutting down idle worker
+[2025-12-15--13-42-32 INFO actix_server::worker] shutting down idle worker
+[2025-12-15--13-42-32 INFO actix_server::worker] shutting down idle worker
+[2025-12-15--13-42-32 INFO actix_server::worker] shutting down idle worker
+[2025-12-15--13-42-32 INFO actix_server::worker] shutting down idle worker
+[2025-12-15--13-42-32 INFO actix_server::accept] accept thread stopped

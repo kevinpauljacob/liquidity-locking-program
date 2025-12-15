@@ -1,7 +1,6 @@
 // filepath: /Users/kevinjacob/Developer/projects/liquidity-locking-program/programs/liquidity-locking-program/src/instructions/create_position.rs
 use anchor_lang::prelude::*;
 use crate::context::damm_v2::{cpi::accounts::CreatePosition, cpi::create_position};
-use crate::constants::*;
 
 #[derive(Accounts)]
 pub struct DammV2CreatePosition<'info> {

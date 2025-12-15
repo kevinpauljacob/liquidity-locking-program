@@ -9,7 +9,7 @@ pub mod damm_v2 {
 
     pub mod cpi {
         use super::*;
-        use anchor_lang::solana_program::program::invoke_signed;
+        use anchor_lang::solana_program::program::{invoke_signed};
 
         // Single accounts module with all structs
         pub mod accounts {
@@ -154,7 +154,7 @@ pub mod damm_v2 {
                 accounts: vec![
                     AccountMeta::new_readonly(ctx.accounts.pool.key(), false),
                     AccountMeta::new(ctx.accounts.position.key(), false),
-                    AccountMeta::new(ctx.accounts.vesting.key(), true),
+                    AccountMeta::new(ctx.accounts.vesting.key(), true),  // Mark as signer
                     AccountMeta::new_readonly(ctx.accounts.position_nft_account.key(), false),
                     AccountMeta::new_readonly(ctx.accounts.owner.key(), true),
                     AccountMeta::new(ctx.accounts.payer.key(), true),
@@ -164,7 +164,7 @@ pub mod damm_v2 {
                 ],
                 data,
             };
-            invoke_signed(
+            invoke_signed(  // Use invoke_signed
                 &ix,
                 &[
                     ctx.accounts.pool.clone(),
@@ -177,7 +177,7 @@ pub mod damm_v2 {
                     ctx.accounts.event_authority.clone(),
                     ctx.accounts.program.clone(),
                 ],
-                &[]
+                ctx.signer_seeds,  
             )?;
             Ok(())
         }

@@ -12,4 +12,6 @@ pub enum ErrorCode {
     InsufficientFunds,
     #[msg("Invalid pool configuration")]
     InvalidPool,
+    #[msg("Invalid vesting account")]
+    InvalidVesting,
 }

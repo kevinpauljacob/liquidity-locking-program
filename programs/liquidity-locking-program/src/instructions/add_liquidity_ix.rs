@@ -1,5 +1,4 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::{Mint, TokenAccount};
 use crate::context::damm_v2::{cpi::accounts::AddLiquidity, cpi::add_liquidity, AddLiquidityParameters};
 
 #[derive(Accounts)]
@@ -14,12 +13,14 @@ pub struct DammV2AddLiquidity<'info> {
     pub position: UncheckedAccount<'info>,
 
     /// User's token A account, writable in add_liquidity
+    /// CHECK: User's token A account (can be Token or Token2022)
     #[account(mut)]
-    pub token_a_account: Account<'info, TokenAccount>, 
+    pub token_a_account: UncheckedAccount<'info>,
 
     /// User's token B account, writable in add_liquidity
+    /// CHECK: User's token B account (can be Token or Token2022)
     #[account(mut)]
-    pub token_b_account: Account<'info, TokenAccount>, 
+    pub token_b_account: UncheckedAccount<'info>,
 
     /// Token A vault, writable in add_liquidity
     /// CHECK: Meteora token A vault
@@ -32,10 +33,12 @@ pub struct DammV2AddLiquidity<'info> {
     pub token_b_vault: UncheckedAccount<'info>,
 
     /// Token A mint, readonly in add_liquidity
-    pub token_a_mint: Account<'info, Mint>,
+    /// CHECK: Token A mint (can be Token or Token2022)
+    pub token_a_mint: UncheckedAccount<'info>,
 
     /// Token B mint, readonly in add_liquidity
-    pub token_b_mint: Account<'info, Mint>,
+    /// CHECK: Token B mint (can be Token or Token2022)
+    pub token_b_mint: UncheckedAccount<'info>,
 
     /// Position NFT account, readonly in add_liquidity
     /// CHECK: Meteora position NFT account
@@ -61,12 +64,11 @@ pub struct DammV2AddLiquidity<'info> {
     pub damm_program: UncheckedAccount<'info>,
 }
 
-pub fn handle_add_liquidity(ctx: Context<DammV2AddLiquidity>) -> Result<()> {
-    let liquidity_delta = 1000000; // Example value; adjust as needed
+pub fn handle_add_liquidity(ctx: Context<DammV2AddLiquidity>, liquidity_delta: u128) -> Result<()> {
     let add_params = AddLiquidityParameters {
-        liquidity_delta,
-        token_a_amount_threshold: 1000,
-        token_b_amount_threshold: 1000,
+        liquidity_delta, // Use the passed value
+        token_a_amount_threshold: 10000000,
+        token_b_amount_threshold: 10000000,
     };
     let add_accounts = AddLiquidity {
         pool: ctx.accounts.pool.to_account_info(),
