@@ -158,3 +158,37 @@ pub struct UserRewardInfo {
     pub reward_pendings: u64,
     pub total_claimed_rewards: u64,
 }
+
+// LockStatus enum for lock state
+#[derive(AnchorSerialize, AnchorDeserialize, Clone, PartialEq, Eq)]
+pub enum LockStatus {
+    Active,
+    Unlocked,
+    Claimed,
+}
+
+// LockAccount PDA for user locks
+#[account]
+pub struct LockAccount {
+    pub user: Pubkey,                    // Owner of the lock
+    pub position_nft_mint: Pubkey,       // Meteora NFT mint for the position
+    pub position_pda: Pubkey,            // Derived Meteora position PDA
+    pub lock_start: u64,                 // Timestamp when lock started
+    pub lock_end: u64,                   // Timestamp when lock ends
+    pub liquidity_locked: u128,          // Amount of liquidity added
+    pub duration_months: u8,             // Lock duration (3/6/12)
+    pub status: LockStatus,              // Current lock status
+    // New fields for reward vesting
+    pub total_rewards_earned: u64,       // Total SLERF rewards claimed from Meteora
+    pub rewards_claimed: u64,            // Total vested SLERF transferred to user
+    pub last_claim_time: u64,            // Timestamp of last reward claim (init to lock_start)
+}
+
+// Config PDA for global program settings
+#[account]
+pub struct Config {
+    pub pool_id: Pubkey,                 // Meteora pool ID
+    pub admin: Pubkey,                   // Admin pubkey
+    pub fee_bps: u16,                    // Optional program fee in basis points
+    pub slf_mint: Pubkey,                // SLERF mint for rewards
+}

@@ -14,4 +14,12 @@ pub enum ErrorCode {
     InvalidPool,
     #[msg("Invalid vesting account")]
     InvalidVesting,
+    #[msg("Lock period not expired")]
+    LockNotExpired, 
+    #[msg("Invalid unlock amount")]
+    InvalidUnlockAmount,
+    #[msg("Unauthorized access")]
+    Unauthorized,
+    #[msg("Lock is not active")]
+    LockNotActive,
 }

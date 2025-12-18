@@ -7,6 +7,7 @@ import {
   PublicKey,
   ComputeBudgetProgram,
   Transaction,
+  SYSVAR_CLOCK_PUBKEY,
 } from "@solana/web3.js";
 import {
   createAssociatedTokenAccountInstruction,
@@ -24,8 +25,6 @@ import {
 } from "@meteora-ag/cp-amm-sdk";
 import BN from "bn.js";
 
-const dammIdl = require("../idls/damm_v2.json"); // path from /tests to /idls
-
 config({ path: "./tests/.env" });
 
 describe("liquidity-locking-program", () => {
@@ -34,10 +33,14 @@ describe("liquidity-locking-program", () => {
     "cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG"
   );
 
-  const userKeypair = Keypair.fromSecretKey(
+  const adminKeypair = Keypair.fromSecretKey(
     bs58.decode(process.env.USER_PRIVATE_KEY!)
   );
+  const admin = adminKeypair.publicKey;
+
+  const userKeypair = Keypair.generate();
   const user = userKeypair.publicKey;
+  console.log("Test User Public Key:", user.toBase58());
 
   // Mints
   const SLERF_MINT = new PublicKey(
@@ -85,14 +88,35 @@ describe("liquidity-locking-program", () => {
     });
   };
 
+  const skipTime = async (seconds: number) => {
+    const info = await program.provider.connection.getAccountInfo(
+      SYSVAR_CLOCK_PUBKEY
+    );
+    if (!info) throw new Error("Clock sysvar not found");
+    const currentChainTimeSeconds = Number(info.data.readBigInt64LE(32));
+    const targetTimestampMs = currentChainTimeSeconds * 1000 + seconds * 1000;
+
+    await rpcCall("surfnet_timeTravel", [
+      {
+        absoluteTimestamp: targetTimestampMs,
+      },
+    ]);
+    await new Promise((r) => setTimeout(r, 500));
+  };
+
   // Shared variables for sequential tests
   let positionNftMint: Keypair;
+  let lockAccount: PublicKey;
 
   before(async () => {
     const lamports = 100 * 10 ** 9; // 100 SOL
 
     // Airdrop SOL using surfnet_setAccount
     await rpcCall("surfnet_setAccount", [user.toBase58(), { lamports }]).catch(
+      (err) => console.log("Error airdropping SOL", err)
+    );
+
+    await rpcCall("surfnet_setAccount", [admin.toBase58(), { lamports }]).catch(
       (err) => console.log("Error airdropping SOL", err)
     );
 
@@ -118,7 +142,41 @@ describe("liquidity-locking-program", () => {
     console.log("User funded with SOL, SLERF, and USDC");
   });
 
-  it("Create Position", async () => {
+  it("Initialize Config", async () => {
+    const poolId = new PublicKey(
+      "8yswq8vqEDeTrN2Ez1Bdq2hRekzvFZgMxrdfUKVaNBtQ"
+    ); // SLERF-USDC pool
+    const feeBps = 50; // 0.5% fee
+    const slfMint = SLERF_MINT;
+
+    const [configPda] = PublicKey.findProgramAddressSync(
+      [Buffer.from("config")],
+      program.programId
+    );
+
+    console.log("Config PDA:", configPda.toBase58());
+
+    const computeUnitIx = ComputeBudgetProgram.setComputeUnitLimit({
+      units: 400_000,
+    });
+
+    const tx = await program.methods
+      .initializeConfig(poolId, feeBps, slfMint)
+      .accounts({
+        admin: user,
+      })
+      .preInstructions([computeUnitIx])
+      .signers([userKeypair])
+      .rpc();
+
+    logTxnSignature(tx);
+
+    // Optional: Fetch and log config to verify
+    const configAccount = await program.account.config.fetch(configPda);
+    console.log("Config initialized:", configAccount);
+  });
+
+  it.skip("Create Position", async () => {
     const pool = new PublicKey("8yswq8vqEDeTrN2Ez1Bdq2hRekzvFZgMxrdfUKVaNBtQ"); // SLERF-USDC pool
 
     // Generate the position NFT mint as a keypair (not a PDA)
@@ -165,7 +223,7 @@ describe("liquidity-locking-program", () => {
     logTxnSignature(tx);
   });
 
-  it("Add Liquidity", async () => {
+  it.skip("Add Liquidity", async () => {
     const pool = new PublicKey("8yswq8vqEDeTrN2Ez1Bdq2hRekzvFZgMxrdfUKVaNBtQ"); // SLERF-USDC pool
 
     // Choose liquidity delta (user-configurable)
@@ -264,7 +322,7 @@ describe("liquidity-locking-program", () => {
     logTxnSignature(tx);
   });
 
-  it("Lock Position", async () => {
+  it.skip("Lock Position", async () => {
     const pool = new PublicKey("8yswq8vqEDeTrN2Ez1Bdq2hRekzvFZgMxrdfUKVaNBtQ");
 
     const durationMonths = 3;
@@ -345,5 +403,238 @@ describe("liquidity-locking-program", () => {
       .rpc();
 
     logTxnSignature(tx);
+  });
+
+  it("Lock Liquidity", async () => {
+    // Generate positionNftMint here (since lock_liquidity creates it)
+    positionNftMint = Keypair.generate();
+    console.log("Position NFT Mint (Lock):", positionNftMint.publicKey);
+
+    const pool = new PublicKey("8yswq8vqEDeTrN2Ez1Bdq2hRekzvFZgMxrdfUKVaNBtQ");
+    const liquidityDelta = new BN(100); // Match add liquidity amount
+    const durationMonths = 3;
+
+    // Derive accounts
+    const position = derivePositionAddress(positionNftMint.publicKey);
+    console.log("Derived Position Address:", position.toBase58());
+    const positionNftAccount = derivePositionNftAccount(
+      positionNftMint.publicKey
+    );
+    console.log("Derived Position NFT Account:", positionNftAccount.toBase58());
+
+    // User's token ATAs (from add liquidity test)
+    const userTokenA = await getAssociatedTokenAddress(
+      SLERF_MINT,
+      user,
+      false,
+      TOKEN_PROGRAM_ID
+    );
+    const userTokenB = await getAssociatedTokenAddress(
+      USDC_MINT,
+      user,
+      false,
+      TOKEN_PROGRAM_ID
+    );
+
+    // Derive LockAccount PDA
+    [lockAccount] = PublicKey.findProgramAddressSync(
+      [
+        Buffer.from("lock"),
+        user.toBuffer(),
+        positionNftMint.publicKey.toBuffer(),
+      ],
+      program.programId
+    );
+    console.log("Lock Account PDA:", lockAccount.toBase58());
+
+    // Escrow Authority PDA
+    const [escrowAuthority] = PublicKey.findProgramAddressSync(
+      [Buffer.from("escrow_authority")],
+      program.programId
+    );
+    console.log("Escrow Authority PDA:", escrowAuthority.toBase58());
+
+    // Escrow NFT ATA
+    const escrowNftAccount = await getAssociatedTokenAddress(
+      positionNftMint.publicKey,
+      escrowAuthority,
+      true,
+      TOKEN_2022_PROGRAM_ID // Use Token2022
+    );
+
+    // Config PDA
+    const [configPda] = PublicKey.findProgramAddressSync(
+      [Buffer.from("config")],
+      program.programId
+    );
+
+    // Pool state for vaults/mints (Meteora-derived)
+    const poolState = await cpAmm.fetchPoolState(pool);
+    const tokenAVault = poolState.tokenAVault;
+    const tokenBVault = poolState.tokenBVault;
+    const tokenAMint = poolState.tokenAMint;
+    const tokenBMint = poolState.tokenBMint;
+
+    const [eventAuthority] = PublicKey.findProgramAddressSync(
+      [Buffer.from("__event_authority")],
+      METEORA_PROGRAM_ID
+    );
+
+    const computeUnitIx = ComputeBudgetProgram.setComputeUnitLimit({
+      units: 400_000,
+    });
+
+    const tx = await program.methods
+      .lockLiquidity(liquidityDelta, durationMonths)
+      .accounts({
+        userTokenA,
+        userTokenB,
+        positionNftMint: positionNftMint.publicKey,
+        positionNftAccount,
+        escrowNftAccount, // Escrow NFT ATA
+        pool, // Pool
+        position,
+        tokenAVault,
+        tokenBVault,
+        tokenAMint,
+        tokenBMint,
+        tokenAProgram: TOKEN_PROGRAM_ID, // For SLERF (SPL Token)
+        tokenBProgram: TOKEN_PROGRAM_ID, // For USDC (SPL Token)
+        user, // User
+      })
+      .preInstructions([computeUnitIx])
+      .signers([userKeypair, positionNftMint])
+      .rpc();
+
+    logTxnSignature(tx);
+
+    // Optional: Fetch and log lock account
+    const lockData = await program.account.lockAccount.fetch(lockAccount);
+    console.log("Lock Account:", lockData);
+  });
+
+  it("Unlock Liquidity", async () => {
+    const pool = new PublicKey("8yswq8vqEDeTrN2Ez1Bdq2hRekzvFZgMxrdfUKVaNBtQ");
+    const liquidityDelta = new BN(0); // 0 for full unlock
+
+    // Skip time to expire the lock (3 months in seconds)
+    await skipTime(3 * 30 * 24 * 60 * 60);
+
+    // Derive accounts (reuse from lock test)
+    const positionAddress = derivePositionAddress(positionNftMint.publicKey);
+    console.log("Derived Position Address:", positionAddress.toBase58());
+    const positionNftAccount = derivePositionNftAccount(
+      positionNftMint.publicKey
+    );
+    console.log("Derived Position NFT Account:", positionNftAccount.toBase58());
+
+    // Debug: Check pool and position discriminators
+    const poolInfo = await program.provider.connection.getAccountInfo(pool);
+    if (poolInfo) {
+      console.log("Pool owner:", poolInfo.owner.toBase58());
+      console.log("Pool discriminator:", poolInfo.data.slice(0, 8));
+    } else {
+      console.log("Pool not found");
+    }
+
+    const positionInfo = await program.provider.connection.getAccountInfo(
+      positionAddress
+    );
+    if (positionInfo) {
+      console.log("Position owner:", positionInfo.owner.toBase58());
+      console.log("Position discriminator:", positionInfo.data.slice(0, 8));
+    } else {
+      console.log("Position not found");
+    }
+
+    // User's token ATAs (reuse from lock test)
+    const userTokenA = await getAssociatedTokenAddress(
+      SLERF_MINT,
+      user,
+      false,
+      TOKEN_PROGRAM_ID
+    );
+    const userTokenB = await getAssociatedTokenAddress(
+      USDC_MINT,
+      user,
+      false,
+      TOKEN_PROGRAM_ID
+    );
+
+    // Escrow Authority PDA (reuse from lock test)
+    const [escrowAuthority] = PublicKey.findProgramAddressSync(
+      [Buffer.from("escrow_authority")],
+      program.programId
+    );
+    console.log("Escrow Authority PDA:", escrowAuthority.toBase58());
+
+    // Escrow NFT ATA (reuse from lock test)
+    const escrowNftAccount = await getAssociatedTokenAddress(
+      positionNftMint.publicKey,
+      escrowAuthority,
+      true,
+      TOKEN_2022_PROGRAM_ID
+    );
+
+    // User's NFT ATA (derive, will be created in instruction if needed)
+    const userNftAccount = await getAssociatedTokenAddress(
+      positionNftMint.publicKey,
+      user,
+      false,
+      TOKEN_2022_PROGRAM_ID
+    );
+
+    // Pool state for vaults/mints (reuse from lock test)
+    const poolState = await cpAmm.fetchPoolState(pool);
+    const tokenAVault = poolState.tokenAVault;
+    const tokenBVault = poolState.tokenBVault;
+    const tokenAMint = poolState.tokenAMint;
+    const tokenBMint = poolState.tokenBMint;
+
+    const [eventAuthority] = PublicKey.findProgramAddressSync(
+      [Buffer.from("__event_authority")],
+      METEORA_PROGRAM_ID
+    );
+
+    const computeUnitIx = ComputeBudgetProgram.setComputeUnitLimit({
+      units: 400_000,
+    });
+
+    const tx = await program.methods
+      .unlockLiquidity(liquidityDelta)
+      .accounts({
+        lockAccount, // Reuse from lock test
+        positionNftMint: positionNftMint.publicKey,
+        escrowAuthority,
+        userTokenA,
+        userTokenB,
+        escrowNftAccount,
+        userNftAccount,
+        pool,
+        position: positionAddress, // Use the derived address
+        tokenAVault,
+        tokenBVault,
+        tokenAMint,
+        tokenBMint,
+        eventAuthority,
+        tokenProgram: TOKEN_PROGRAM_ID,
+        token2022Program: TOKEN_2022_PROGRAM_ID,
+        associatedTokenProgram: new PublicKey(
+          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        ),
+        systemProgram: new PublicKey("11111111111111111111111111111111"),
+        dammProgram: METEORA_PROGRAM_ID,
+        user,
+        clock: new PublicKey("SysvarC1ock11111111111111111111111111111111"),
+      })
+      .preInstructions([computeUnitIx])
+      .signers([userKeypair])
+      .rpc();
+
+    logTxnSignature(tx);
+
+    // Fetch and log updated lock account
+    const lockData = await program.account.lockAccount.fetch(lockAccount);
+    console.log("Updated Lock Account:", lockData);
   });
 });

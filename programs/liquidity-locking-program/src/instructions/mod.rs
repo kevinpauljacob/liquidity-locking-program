@@ -1,8 +1,5 @@
-pub mod create_position_ix;
-pub use create_position_ix::*;
+pub mod user;
+pub use user::*;
 
-pub mod add_liquidity_ix;
-pub use add_liquidity_ix::*;
-
-pub mod lock_position_ix;
-pub use lock_position_ix::*;
+pub mod admin;
+pub use admin::*;

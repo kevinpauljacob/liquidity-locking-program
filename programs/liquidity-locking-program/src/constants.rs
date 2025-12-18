@@ -15,4 +15,7 @@ pub mod seeds {
     pub const POSITION_SEED: &[u8] = b"position";
     pub const VESTING_SEED: &[u8] = b"vesting";
     pub const EVENT_AUTHORITY_SEED: &[u8] = b"__event_authority";
+    pub const LOCK_SEED: &[u8] = b"lock";                          // For LockAccount PDA: ["lock", user_pubkey, position_nft_mint]
+    pub const CONFIG_SEED: &[u8] = b"config";                      // For Config PDA: ["config"]
+    pub const ESCROW_AUTHORITY_SEED: &[u8] = b"escrow_authority";  // For EscrowAuthority PDA: ["escrow_authority"]
 }
